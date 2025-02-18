@@ -1,5 +1,10 @@
-export default function ResultPage({ params }) {
+import { notFound } from "next/navigation";
+
+export default async function ResultPage({ params }) {
     const { id } = params;  // Get the dynamic ID from the URL
+    if (!id) {
+        return notFound(); // Show 404 if ID is missing
+    }
 
     return (
         <div>
