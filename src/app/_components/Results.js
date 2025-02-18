@@ -1,7 +1,7 @@
 
 function Results() {
   return (
-    <div>Results</div>
+    <div id="results">Results</div>
   )
 }
 

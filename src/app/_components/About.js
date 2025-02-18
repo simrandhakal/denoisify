@@ -2,7 +2,7 @@ import Image from "next/image"
 
 function About() {
   return (
-    <div className="px-[8rem] py-[3rem] flex flex-col gap-[5rem]">
+    <div className="px-[8rem] py-[3rem] flex flex-col gap-[5rem]" id="about">
         <h2 className="text-[2.5rem] font-bold text-center">About Us</h2>
         <div className="flex justify-between items-center gap-[10rem] mb-[2rem]">
             <div>

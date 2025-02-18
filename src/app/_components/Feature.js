@@ -1,6 +1,6 @@
 function Feature() {
     return (
-      <div className="px-[8rem] py-[7rem] flex flex-col gap-[5rem]">
+      <div className="px-[8rem] py-[7rem] flex flex-col gap-[5rem]" id="feature">
         <h2 className="text-[2.5rem] font-bold text-center">Our Features</h2>
         <div className="grid grid-cols-2 gap-6">
           {[

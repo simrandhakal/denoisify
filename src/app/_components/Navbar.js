@@ -9,14 +9,14 @@ export  default function Navbar() {
     const pathname = usePathname();
     const navLinks = [
         { href: "/", label: "Home" },
-        { href: "/about", label: "About" },
-        { href: "/features", label: "Feature"},
-        { href: "/contact", label: "Contact" },
-        { href: "/results", label: "Results" },
+        { href: "/#about", label: "About" },
+        { href: "/#feature", label: "Feature"},
+        { href: "/#contact", label: "Contact" },
+        { href: "/#results", label: "Results" },
         ];
 
   return (
-    <nav className="h-[4rem] flex gap-2 justify-between px-11">
+    <nav className="h-[4rem] flex gap-2 justify-between px-[6rem]">
       {/* Logo Section */}
       <div className="h-[2rem] flex justify-center items-center mt-3">
         <Logo />
