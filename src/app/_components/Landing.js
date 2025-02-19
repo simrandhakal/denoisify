@@ -2,7 +2,7 @@ import Image from "next/image"
 
 function Landing() {
   return (
-    <div className="flex justify-between pt-[6rem] pb-[8rem] px-[8rem] gap-[2rem]">
+    <div className="flex justify-between items-end pt-[9rem] pb-[4rem] px-[8rem] gap-[2rem]" id="home">
         <div className="flex flex-col gap-[2rem] w-[40rem] pt-[2rem]">
             <h2 className="text-[3rem] font-bold">
                 Denoisify: AI Powered Image Denoiser

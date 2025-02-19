@@ -2,9 +2,9 @@ import Image from "next/image"
 
 function About() {
   return (
-    <div className="px-[8rem] py-[3rem] flex flex-col gap-[5rem]" id="about">
+    <div className="px-[8rem] pb-[3rem] pt-[8rem] flex flex-col gap-[4rem]" id="about">
         <h2 className="text-[2.5rem] font-bold text-center">About Us</h2>
-        <div className="flex justify-between items-center gap-[10rem] mb-[2rem]">
+        <div className="flex justify-between items-center gap-[10rem] mb-[1.5rem]">
             <div>
                 <Image src='/about.svg' width={'500'} height={'500'} alt="images"></Image>
             </div>

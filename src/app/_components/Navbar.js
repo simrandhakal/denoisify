@@ -1,36 +1,40 @@
-"use client"
-import { usePathname } from "next/navigation"; // Import to detect active route
+"use client";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
+import { useState } from "react";
 
 
+export default function Navbar() {
+  const pathname = usePathname();
+  const navLinks = [
+    { href: "/#home", label: "Home" },
+    { href: "/#about", label: "About" },
+    { href: "/#feature", label: "Feature" },
+    { href: "/#contact", label: "Contact" },
+    { href: "/#examples", label: "Examples" },
+  ];
 
-export  default function Navbar() {
-    const pathname = usePathname();
-    const navLinks = [
-        { href: "/", label: "Home" },
-        { href: "/#about", label: "About" },
-        { href: "/#feature", label: "Feature"},
-        { href: "/#contact", label: "Contact" },
-        { href: "/#examples", label: "Examples" },
-        ];
+  const [activeSection, setActiveSection] = useState("#home"); // Default active section
 
   return (
-    <nav className="h-[4rem] flex gap-2 justify-between px-[6rem]">
+    <nav className="z-50 fixed top-0 w-full h-[4rem] flex items-center px-[6rem] bg-[#131313] shadow-md">
       {/* Logo Section */}
-      <div className="h-[2rem] flex justify-center items-center mt-3">
+      <div className="h-[2rem] flex items-center">
         <Logo />
       </div>
 
-      {/* Navigation Links */}
-      <ul className="flex justify-between gap-[3rem] py-1 items-center">
-        {navLinks.map(({ href, label, onClick }) => {
-          const isActive = pathname === href;
+      {/* Navigation Links - Centered */}
+      <ul className="flex-1 flex justify-center gap-[3rem]">
+      {navLinks.map(({ href, label }) => {
+          const isactive = pathname === href; //  Detect active section
+
           return (
-            <Link key={href} href={href}>
+            <Link key={href} href={href} scroll={true}>
               <li
-                className={`transition-all duration-300 ${
-                  isActive
+                onClick={() => handleScroll(href)} //  Smooth scroll on click
+                className={`transition-all duration-300 cursor-pointer ${
+                  isactive
                     ? "text-[#568bc6] underline underline-offset-4"
                     : "text-[#f0efef] hover:underline underline-offset-4"
                 }`}
@@ -42,10 +46,8 @@ export  default function Navbar() {
         })}
       </ul>
 
-      <div>
-
-      </div>
+      {/* Empty div for alignment */}
+      <div className="w-[2rem]"></div>
     </nav>
-  )
+  );
 }
-
