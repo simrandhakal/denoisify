@@ -1,21 +1,28 @@
 "use client";
-import { usePathname } from "next/navigation";
+
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [activeSection, setActiveSection] = useState("home");
+
   const navLinks = [
-    { href: "/#home", label: "Home" },
-    { href: "/#about", label: "About" },
-    { href: "/#feature", label: "Feature" },
-    { href: "/#contact", label: "Contact" },
-    { href: "/#examples", label: "Examples" },
+    { href: "/?to=home#home", label: "Home" },
+    { href: "/?to=about#about", label: "About" },
+    { href: "/?to=feature#feature", label: "Feature" },
+    { href: "/?to=contact#contact", label: "Contact" },
+    { href: "/?to=examples#examples", label: "Examples" },
   ];
 
-  const [activeSection, setActiveSection] = useState("#home"); // Default active section
+  useEffect(() => {
+    const toParam = searchParams.get("to"); // Get "to" value from URL
+    if (toParam) {
+      setActiveSection(toParam);
+    }
+  }, [searchParams]);
 
   return (
     <nav className="z-50 fixed top-0 w-full h-[4rem] flex items-center px-[6rem] bg-[#131313] shadow-md">
@@ -25,23 +32,24 @@ export default function Navbar() {
       </div>
 
       {/* Navigation Links - Centered */}
-      <ul className="flex-1 flex justify-center gap-[3rem]">
-      {navLinks.map(({ href, label }) => {
-          const isactive = pathname === href; //  Detect active section
+      <ul className="flex-1 flex justify-center gap-[3rem] relative">
+        {navLinks.map(({ href, label }) => {
+          const isActive = activeSection === label.toLowerCase();
 
           return (
-            <Link key={href} href={href} scroll={true}>
-              <li
-                onClick={() => handleScroll(href)} //  Smooth scroll on click
+            <li key={href} className="relative">
+              <Link
+                href={href}
                 className={`transition-all duration-300 cursor-pointer ${
-                  isactive
-                    ? "text-[#568bc6] underline underline-offset-4"
-                    : "text-[#f0efef] hover:underline underline-offset-4"
+                  isActive ? "text-[#3e71aa]" : "text-[#f0efef] hover:text-[#568bc6]"
                 }`}
               >
                 {label}
-              </li>
-            </Link>
+              </Link>
+              {isActive && (
+                <div className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-[#568bc6] transition-all duration-300"></div>
+              )}
+            </li>
           );
         })}
       </ul>
