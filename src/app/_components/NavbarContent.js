@@ -15,6 +15,7 @@ export default function NavbarContent() {
     { href: "/?to=feature#feature", label: "Feature" },
     { href: "/?to=contact#contact", label: "Contact" },
     { href: "/?to=examples#examples", label: "Examples" },
+    { href: "/result?to=results", label: "Results" },
   ];
 
   useEffect(() => {
@@ -41,13 +42,13 @@ export default function NavbarContent() {
               <Link
                 href={href}
                 className={`transition-all duration-300 cursor-pointer ${
-                  isActive ? "text-[#3e71aa]" : "text-[#f0efef] hover:text-[#568bc6]"
+                  isActive ? "text-[#2563EB]" : "text-[#f0efef] hover:text-[#2563EB]"
                 }`}
               >
                 {label}
               </Link>
               {isActive && (
-                <div className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-[#568bc6] transition-all duration-300"></div>
+                <div className="absolute left-0 bottom-[-2px] h-[2px] w-full bg-[#2563EB] transition-all duration-300"></div>
               )}
             </li>
           );
