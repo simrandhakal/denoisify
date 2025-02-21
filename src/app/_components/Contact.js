@@ -39,7 +39,7 @@ function Contact() {
                 alt={member.name}
                 className="w-40 h-40 rounded-full mx-auto mb-4 object-cover"
               />
-              <h2 className="text-[1.5rem] font-bold text-[#568bc6] text-center">{member.name}</h2>
+              <h2 className="text-[1.5rem] font-bold text-[#2563EB] text-center">{member.name}</h2>
               <p className="text-[0.9rem] mt-1 text-[#f0efef]">{member.email}</p>
               <a
                 href={`mailto:${member.email}`}

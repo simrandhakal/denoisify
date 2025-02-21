@@ -1,4 +1,5 @@
 import Image from "next/image";
+import UploadModal from "./UploadModal";
 
 function Landing() {
   return (
@@ -16,8 +17,8 @@ function Landing() {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </p>
-        <button
-          className="bg-[#568bc6] text-[#f0efef] border border-transparent py-[0.8rem] px-[1.8rem] rounded-[0.5rem] w-[14rem] 
+        {/* <button
+          className="bg-[#2563EB] text-[#f0efef] border border-transparent py-[0.8rem] px-[1.8rem] rounded-[0.5rem] w-[14rem] 
                         transition-all duration-500 ease-in-out hover:border-white relative inline-block group"
         >
           <span className="relative inline-block transition-all duration-500 pr-0 group-hover:pr-6">
@@ -26,7 +27,8 @@ function Landing() {
               &raquo;
             </span>
           </span>
-        </button>
+        </button> */}
+        <UploadModal />
       </div>
       <div>
         <Image

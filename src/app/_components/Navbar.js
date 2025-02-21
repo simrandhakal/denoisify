@@ -13,6 +13,7 @@ export default function Navbar() {
     { href: "/#feature", label: "Feature" },
     { href: "/#contact", label: "Contact" },
     { href: "/#examples", label: "Examples" },
+    { href: "/result", label: "Results" },
   ];
 
   const [activeSection, setActiveSection] = useState("#home"); // Default active section
@@ -35,7 +36,7 @@ export default function Navbar() {
                 onClick={() => handleScroll(href)} //  Smooth scroll on click
                 className={`transition-all duration-300 cursor-pointer ${
                   isactive
-                    ? "text-[#568bc6] underline underline-offset-4"
+                    ? "text-[#2563EB] underline underline-offset-4"
                     : "text-[#f0efef] hover:underline underline-offset-4"
                 }`}
               >
