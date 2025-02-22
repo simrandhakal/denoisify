@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
+import { useState } from "react";
 import useFetchResults from "@/hooks/useFetchResults";
 
 export default function Home() {
   const { results, loading, error } = useFetchResults();
+  const [enlargedImage, setEnlargedImage] = useState(null);
 
   if (loading) return <div className="text-center mt-10">Loading...</div>;
   if (error)
@@ -24,28 +26,29 @@ export default function Home() {
               key={result.reference_id}
               className="bg-[#f0efef] p-4 rounded-lg shadow-md"
             >
-              <div className="flex items-center space-x-4 justify-between px-[]">
+              <div className="flex items-center space-x-4 justify-between">
                 <img
                   src={result.input_image}
                   alt="Before"
-                  className="w-24 h-24 object-cover rounded-md border"
+                  className="w-24 h-24 object-cover rounded-md border cursor-pointer hover:border-black"
+                  onClick={() => setEnlargedImage(result.input_image)}
                 />
                 <img
                   src={result.output_image}
                   alt="After"
-                  className="w-24 h-24 object-cover rounded-md border"
+                  className="w-24 h-24 object-cover rounded-md border cursor-pointer hover:border-black"
+                  onClick={() => setEnlargedImage(result.output_image)}
                 />
                 <div className="flex-1 flex flex-row gap-[3rem] items-center justify-between">
                   <div>
                     <h2 className="text-lg font-semibold text-gray-950 mb-2">
                       {result.name}
                     </h2>
-
                     <p className="text-gray-500 text-sm">
                       Resolution: {result.resolution}
                     </p>
                     <p className="text-gray-500 text-sm">
-                      Status: {result.status}
+                      Status: <span className="capitalize">{result.status}</span>
                     </p>
                   </div>
                   <Link
@@ -60,6 +63,13 @@ export default function Home() {
           ))}
         </ul>
       </div>
+      
+      {/* Modal for Enlarged Image */}
+      {enlargedImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 border border-transparent hover:border-black" onClick={() => setEnlargedImage(null)}>
+          <img src={enlargedImage} alt="Enlarged" className="max-w-full max-h-full rounded-lg" />
+        </div>
+      )}
     </div>
   );
 }

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; 
+import { API_URL_INIT } from "@/app/lib/config";
 
 export function useUpload() {
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ export function useUpload() {
       formData.append("input_image", file);
 
       axios
-        .post("https://simrandhakal.pythonanywhere.com/api/conv/initiate/", formData, {
+        .post(API_URL_INIT, formData, {
             headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response) => {

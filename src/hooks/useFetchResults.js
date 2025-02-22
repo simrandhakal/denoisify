@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import { API_URL_CONV} from '@/app/lib/config';
+
 
 const useFetchResults = () => {
   const [results, setResults] = useState([]);
@@ -9,7 +11,7 @@ const useFetchResults = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const response = await fetch("https://simrandhakal.pythonanywhere.com/api/conv");
+        const response = await fetch(API_URL_CONV);
         if (!response.ok) throw new Error("Failed to fetch results");
         const data = await response.json();
         setResults(data);
