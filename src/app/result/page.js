@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import useFetchResults from "@/hooks/useFetchResults";
+import ImageViewer from "awesome-image-viewer";
 
 export default function Home() {
   const { results, loading, error } = useFetchResults();
@@ -19,6 +20,18 @@ export default function Home() {
 
   if (error)
     return <div className="text-center text-red-500 mt-10">Error: {error}</div>;
+
+  const openImageViewer = (index, result) => {
+    const images = [
+      { src: result.input_image, title: "Before" },
+      { src: result.output_image, title: "After" }
+    ];
+
+    new ImageViewer({
+      images: images.map((img) => ({ mainUrl: img.src })),
+      startAt: index,
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#131313] py-5 px-5 mt-[5rem]">
@@ -40,13 +53,13 @@ export default function Home() {
                   src={result.input_image}
                   alt="Before"
                   className="w-24 h-24 object-cover rounded-md border cursor-pointer hover:border-black"
-                  onClick={() => setEnlargedImage(result.input_image)}
+                  onClick={() => openImageViewer(0, result)} // Open the image viewer for Before
                 />
                 <img
                   src={result.output_image}
                   alt="After"
                   className="w-24 h-24 object-cover rounded-md border cursor-pointer hover:border-black"
-                  onClick={() => setEnlargedImage(result.output_image)}
+                  onClick={() => openImageViewer(1, result)} // Open the image viewer for After
                 />
                 <div className="flex-1 flex flex-row gap-[3rem] items-center justify-between">
                   <div>
@@ -73,7 +86,7 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* Modal for Enlarged Image */}
+      {/* Modal for Enlarged Image (Using ImageViewer for before and after images) */}
       {enlargedImage && (
         <div
           className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 border border-transparent hover:border-black"
