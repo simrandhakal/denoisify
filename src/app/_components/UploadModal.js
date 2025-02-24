@@ -31,11 +31,11 @@ export default function UploadModal() {
             <span className="absolute opacity-0 top-0 right-[-20px] transition-all duration-500 group-hover:opacity-100 group-hover:right-0">
               &raquo;
             </span>
-          </span>
+        </span>
       </DialogTrigger>
+
       <DialogContent className="bg-[#131313] text-[#f0efef] p-6 rounded-lg">
         <DialogTitle><h2 className="text-xl font-semibold mb-4">Upload an Image</h2></DialogTitle>
-        
 
         <input
           type="text"
@@ -58,12 +58,26 @@ export default function UploadModal() {
         {error && <p className="text-red-500">{error}</p>}
 
         <button
-          className="bg-[#2563EB] text-white py-3 px-4 border border-transparent rounded-md w-full hover:border-white disabled:bg-gray-700"
+          className="bg-[#2563EB] text-white py-3 px-4 border border-transparent rounded-md w-full hover:border-white disabled:bg-gray-700 flex items-center justify-center gap-2"
           onClick={() => uploadImage(name, file)}
           disabled={loading || !file || !name}
         >
-          {loading ? "Uploading..." : "Submit"}
+          {loading ? (
+            <>
+              <span className="animate-spin border-t-2 border-white border-solid rounded-full w-5 h-5"></span>
+              Uploading...
+            </>
+          ) : (
+            "Submit"
+          )}
         </button>
+
+        {/* {loading && (
+          <div className="mt-4 flex items-center gap-2 text-blue-500 justify-center">
+            <span className="animate-spin border-t-2 border-blue-600 border-solid rounded-full w-5 h-5"></span>
+            Uploading, please wait...
+          </div>
+        )} */}
       </DialogContent>
     </Dialog>
   );

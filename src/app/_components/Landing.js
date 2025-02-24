@@ -16,17 +16,6 @@ function Landing() {
 
 
         </p>
-        {/* <button
-          className="bg-[#2563EB] text-[#f0efef] border border-transparent py-[0.8rem] px-[1.8rem] rounded-[0.5rem] w-[14rem] 
-                        transition-all duration-500 ease-in-out hover:border-white relative inline-block group"
-        >
-          <span className="relative inline-block transition-all duration-500 pr-0 group-hover:pr-6">
-            Upload Image
-            <span className="absolute opacity-0 top-0 right-[-20px] transition-all duration-500 group-hover:opacity-100 group-hover:right-0">
-              &raquo;
-            </span>
-          </span>
-        </button> */}
         <UploadModal />
       </div>
       <div>
