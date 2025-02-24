@@ -12,10 +12,9 @@ function Landing() {
           Denoisify: AI Powered Image Denoiser
         </h2>
         <p className="text-[1.2rem] mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+        Denoisify is an AI-powered solution that uses the GAN model for image denoising. This model effectively reduces noise while preserving essential image details, delivering better results than traditional methods. To achieve this, simply upload your noisy images, and our model will restore them with removing noises and better results than before.
+
+
         </p>
         {/* <button
           className="bg-[#2563EB] text-[#f0efef] border border-transparent py-[0.8rem] px-[1.8rem] rounded-[0.5rem] w-[14rem] 

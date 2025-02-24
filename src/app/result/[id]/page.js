@@ -27,8 +27,20 @@ export default function ResultDetail() {
     fetchResultDetail();
   }, [id]);
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>;
-  if (error) return <div className="text-center text-red-500 mt-10">Error: {error}</div>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#131313]">
+        <div className="flex flex-col items-center">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-white mt-4">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return <div className="text-center text-red-500 mt-10">Error: {error}</div>;
+  }
 
   const images = [
     { src: result.input_image, title: "Before" },
@@ -50,12 +62,12 @@ export default function ResultDetail() {
 
       const a = document.createElement("a");
       a.href = blobUrl;
-      a.download = "output_image.jpg"; // Change filename if needed
+      a.download = "output_image.jpg";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
 
-      URL.revokeObjectURL(blobUrl); // Cleanup
+      URL.revokeObjectURL(blobUrl);
     } catch (error) {
       console.error("Download failed:", error);
     }

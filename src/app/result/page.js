@@ -7,7 +7,16 @@ export default function Home() {
   const { results, loading, error } = useFetchResults();
   const [enlargedImage, setEnlargedImage] = useState(null);
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#131313]">
+        <div className="flex flex-col items-center">
+          <div className="w-16 h-16 border-4 border-gray-300 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-[#f0efef] text-lg mt-4">Loading...</p>
+        </div>
+      </div>
+    );
+
   if (error)
     return <div className="text-center text-red-500 mt-10">Error: {error}</div>;
 
@@ -63,11 +72,18 @@ export default function Home() {
           ))}
         </ul>
       </div>
-      
+
       {/* Modal for Enlarged Image */}
       {enlargedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 border border-transparent hover:border-black" onClick={() => setEnlargedImage(null)}>
-          <img src={enlargedImage} alt="Enlarged" className="max-w-full max-h-full rounded-lg" />
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 border border-transparent hover:border-black"
+          onClick={() => setEnlargedImage(null)}
+        >
+          <img
+            src={enlargedImage}
+            alt="Enlarged"
+            className="max-w-full max-h-full rounded-lg"
+          />
         </div>
       )}
     </div>
