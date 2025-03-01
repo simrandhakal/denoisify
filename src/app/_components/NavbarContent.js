@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 export default function NavbarContent() {
   const searchParams = useSearchParams();
   const [activeSection, setActiveSection] = useState("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { href: "/?to=home#home", label: "Home" },
@@ -26,19 +27,25 @@ export default function NavbarContent() {
   }, [searchParams]);
 
   return (
-    <nav className="z-50 fixed top-0 w-full h-[4rem] flex items-center px-[6rem] bg-[#131313] shadow-md">
+    <nav className="z-5 realtive fixed top-0 w-full h-[4rem] flex items-center px-[3rem] sm:px-[4rem] lg:px[6rem] bg-[#131313] shadow-md">
       {/* Logo Section */}
       <div className="h-[2rem] flex items-center">
         <Logo />
       </div>
 
-      {/* Navigation Links - Centered */}
-      <ul className="flex-1 flex justify-center gap-[3rem] relative">
+      
+
+      {/* Navigation Links - Desktop and Mobile */}
+      <ul
+        className={`flex-1 flex justify-center gap-[3rem] relative ${
+          isMobileMenuOpen ? "flex-col absolute top-[4rem] left-0 w-full bg-[#131313]" : "lg:flex hidden"
+        }`}
+      >
         {navLinks.map(({ href, label }) => {
           const isActive = activeSection === label.toLowerCase();
 
           return (
-            <li key={href} className="relative">
+            <li key={href} className="relative py-4 text-center">
               <Link
                 href={href}
                 className={`transition-all duration-300 cursor-pointer ${
@@ -55,8 +62,30 @@ export default function NavbarContent() {
         })}
       </ul>
 
+      {/* Hamburger Icon for Mobile */}
+      <button
+        className="lg:hidden text-white ml-auto relative z-20"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        <span
+          className={`block w-6 h-1 bg-white mb-2 transition-all duration-300 ${
+            isMobileMenuOpen ? "rotate-45 absolute top-0 left-0" : ""
+          }`}
+        ></span>
+        <span
+          className={`block w-6 h-1 bg-white mb-2 transition-all duration-300 ${
+            isMobileMenuOpen ? "opacity-0 mb-0" : ""
+          }`}
+        ></span>
+        <span
+          className={`block w-6 h-1 bg-white transition-all duration-300 ${
+            isMobileMenuOpen ? "-rotate-45 absolute bottom-0 left-0" : ""
+          }`}
+        ></span>
+      </button>
+
       {/* Empty div for alignment */}
-      <div className="w-[2rem]"></div>
+      <div className="w-[2rem] hidden lg:block"></div>
     </nav>
   );
 }
