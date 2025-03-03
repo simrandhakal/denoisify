@@ -9,9 +9,9 @@ export default function Home() {
     <div className="">
           <Landing />
           <About />
+          <Examples />
           <Feature />
           <Contact />
-          <Examples />
     </div>
   );
 }
