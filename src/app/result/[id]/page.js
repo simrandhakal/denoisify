@@ -102,8 +102,8 @@ export default function ResultDetail() {
 
         <p className="text-[#f0efef] mt-4 text-sm">Resolution: {result.resolution}</p>
         <p className="text-[#f0efef] text-sm">Status: <span className="capitalize">{result.status}</span></p>
-        <p className="text-[#f0efef] text-sm">Loss: {result.loss}</p>
-        <p className="text-[#f0efef] text-sm">Accuracy: {result.accuracy}</p>
+        {/* <p className="text-[#f0efef] text-sm">Loss: {result.loss}</p> */}
+        {/* <p className="text-[#f0efef] text-sm">Accuracy: {result.accuracy}</p> */}
 
         <div className="flex gap-8">
           <button

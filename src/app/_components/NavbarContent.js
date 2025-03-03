@@ -37,7 +37,7 @@ export default function NavbarContent() {
 
       {/* Navigation Links - Desktop and Mobile */}
       <ul
-        className={`flex-1 flex justify-center gap-[3rem] relative ${
+        className={`flex-1  flex justify-center gap-[3rem] relative ${
           isMobileMenuOpen ? "flex-col absolute top-[4rem] left-0 w-full bg-[#131313]" : "lg:flex hidden"
         }`}
       >
