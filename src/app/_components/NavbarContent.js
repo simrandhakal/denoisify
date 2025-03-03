@@ -13,9 +13,9 @@ export default function NavbarContent() {
   const navLinks = [
     { href: "/?to=home#home", label: "Home" },
     { href: "/?to=about#about", label: "About" },
+    { href: "/?to=examples#examples", label: "Examples" },
     { href: "/?to=feature#feature", label: "Feature" },
     { href: "/?to=contact#contact", label: "Contact" },
-    { href: "/?to=examples#examples", label: "Examples" },
     { href: "/result?to=results", label: "Results" },
   ];
 
