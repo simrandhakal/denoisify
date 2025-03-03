@@ -36,7 +36,7 @@ function Contact() {
             >
               <img
                 src={member.image}
-                alt={member.name}
+                alt={"image"}
                 className="w-40 h-40 rounded-full mx-auto mb-4 object-cover"
               />
               <h2 className="text-[1.5rem] font-bold text-[#2563EB] text-center">{member.name}</h2>

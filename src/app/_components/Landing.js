@@ -12,7 +12,7 @@ function Landing() {
           Denoisify: AI Powered Image Denoiser
         </h2>
         <p className="text-[1.2rem] mb-4">
-        Denoisify is an AI-powered solution that uses the GAN model for image denoising. This model effectively reduces noise while preserving essential image details, delivering better results than traditional methods. To achieve this, simply upload your noisy images, and our model will restore them with removing noises and better results than before.
+        Denoisify is an AI-powered solution that uses the Generative Adversarial Networks (GAN) model for image denoising. This model effectively reduces noise while preserving essential image details, delivering denoised results. To achieve this, simply upload your noisy images, and our model will restore them by removing noises.
 
 
         </p>
